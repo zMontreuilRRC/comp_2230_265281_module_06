@@ -60,3 +60,24 @@ function getCookie(name) {
 function deleteCookie(name) {
     document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
 }
+
+// LocalStorage and SessionStorage
+// Cookies are usually treated as a small, short-term solution
+// LocalStorage is usually for storing larger pieces of persistent data, and are not sent with HTTP requests
+localStorage.setItem("username", "Zach M");
+
+const terminatorFilms = [{title: "Terminator", year: 1984},
+    {title: "Terminator 2", year: 1991}
+];
+
+// localStorage, like cookies, can only store strings
+localStorage.setItem("terminatorFilms", JSON.stringify(terminatorFilms));
+
+let retrievedFilms = JSON.parse(localStorage.getItem("terminatorFilms"));
+
+localStorage.removeItem("terminatorFilms");
+    
+// sessionStorage is like localStorage but lasts until a session ends
+sessionStorage.setItem("favouriteColour", "blue");
+console.log(sessionStorage.getItem("favouriteColour"));
+sessionStorage.removeItem("favouriteColour");
